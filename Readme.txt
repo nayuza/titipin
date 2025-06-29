@@ -1,6 +1,6 @@
-Thanks for downloading this template!
-
-Template Name: iLanding
-Template URL: https://bootstrapmade.com/ilanding-bootstrap-landing-page-template/
-Author: BootstrapMade.com
-License: https://bootstrapmade.com/license/
+Anggota Kelompok:
+Ubaid Khoir Julio Dn(21.11.3822)
+M.Nasyid Yunitian Rizal(22.11.5073)
+Sofyan(22.11.5099)
+Christian Nery Vandella(22.11.5092)
+Aryus Danuarta(20.11.3681)
