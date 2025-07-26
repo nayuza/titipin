@@ -8,7 +8,7 @@
   <meta name="description" content="Titip.in adalah platform penitipan barang fleksibel dengan jasa antar-jemput. Solusi praktis untuk mahasiswa dan perantau.">
   <meta name="keywords" content="titip barang, sewa gudang, penitipan mahasiswa, simpan barang, jasa angkut barang">
 
-  <link href="assets/img/icon.png" rel="icon">
+  <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -71,9 +71,9 @@
               </p>
               <div class="hero-buttons">
                 <a href="#pricing" class="btn btn-primary me-0 me-sm-2 mx-1">Cek Harga & Lokasi</a>
-                <a href="https://wa.me/6283127541855?text=Halo%20Admin%20Titip.in,%20saya%20mau%20pesan%20layanan%20penitipan." class="btn btn-link mt-2 mt-sm-0 glightbox">
+                <a href="https://wa.me/6283127541855?text=Halo%20Admin%20Titip.in,%20saya%20mau%20bertanya%20tentang%20layanan%20penitipan." class="btn btn-link mt-2 mt-sm-0">
                   <i class="bi bi-whatsapp me-1"></i>
-                  <A href="https://wa.me/6283127541855?text=Halo%20Admin%20Titip.in,%20saya%20mau%20pesan%20layanan%20penitipan.">Tanya Admin
+                  Tanya Admin
                 </a>
               </div>
             </div>
@@ -85,7 +85,44 @@
           </div>
         </div>
       </div>
-    </section><section id="about" class="about section">
+    </section><section id="cek-gudang" class="cek-gudang section light-background">
+    <div class="container" data-aos="fade-up">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+
+          <div class="cek-gudang-box">
+            <h4>Cek Ketersediaan Gudang di Lokasimu</h4>
+            <p class="text-center mb-4">
+              Pilih daerah di Yogyakarta untuk melihat apakah ada slot yang tersedia.<br>
+              <small>Kapasitas dihitung berdasarkan jumlah boks ukuran standar.</small>
+            </p>
+
+            <form id="form-cek-gudang">
+              <div class="input-group input-group-lg">
+                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                <select class="form-select" id="daerah-pilihan" required>
+                  <option value="" selected disabled>-- Pilih Daerah --</option>
+                  <option value="Sleman">Sleman</option>
+                  <option value="Bantul">Bantul</option>
+                  <option value="Kota Yogyakarta">Kota Yogyakarta</option>
+                  <option value="Kulon Progo">Kulon Progo</option>
+                  <option value="Gunungkidul">Gunungkidul</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Cek Sekarang</button>
+              </div>
+            </form>
+
+            <div id="hasil-pengecekan" class="mt-4" style="display: none;">
+              </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+    <section id="about" class="about section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row gy-4 align-items-center justify-content-between">
           <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
@@ -500,7 +537,7 @@
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">Titip.in</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">Sofyan</a>
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
   </footer>
@@ -536,7 +573,101 @@
     .whatsapp-float img:hover {
       transform: scale(1.1);
     }
+    .cek-gudang-box {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.07);
+      transition: all 0.3s ease-in-out;
+      margin-top: 20px;
+    }
+
+    .cek-gudang-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .cek-gudang-box h4 {
+      font-weight: 700;
+      color: var(--heading-color);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .cek-gudang-box .input-group-text {
+      background-color: var(--primary-color);
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .cek-gudang-box .form-select,
+    .cek-gudang-box .btn {
+      height: 55px;
+      font-size: 1rem;
+    }
+
+    #hasil-pengecekan .alert {
+      text-align: left;
+      padding: 20px;
+      border-left: 5px solid;
+      border-radius: 8px;
+    }
+
+    #hasil-pengecekan .alert-success {
+      border-color: #198754;
+    }
+
+    #hasil-pengecekan .alert-warning {
+      border-color: #fd7e14;
+    }
+
+    #hasil-pengecekan h5 {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
   </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('form-cek-gudang');
+      const hasilDiv = document.getElementById('hasil-pengecekan');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const daerah = document.getElementById('daerah-pilihan').value;
+        if (!daerah) {
+          alert('Silakan pilih daerah terlebih dahulu.');
+          return;
+        }
+
+        hasilDiv.style.display = 'block';
+        hasilDiv.innerHTML = `<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Mengecek ketersediaan di ${daerah}...</p>`;
+
+        fetch(`api/check_gudang.php?daerah=${daerah}`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then(data => {
+            let content = '';
+            if (data.status === 'tersedia') {
+              content = `<div class="alert alert-success"><h4>${data.message}</h4><hr><p class="mb-1"><strong>Nama Gudang:</strong> ${data.data.nama_gudang}</p><p class="mb-1"><strong>Alamat:</strong> ${data.data.alamat}</p><p class="mb-0"><strong>Sisa Slot:</strong> Sekitar ${data.data.sisa_slot} boks</p></div><a href="https://wa.me/6283127541855?text=Halo%20Admin%20Titip.in,%20gudang%20di%20${daerah}%20tersedia.%20Saya%20mau%20pesan." class="btn btn-success mt-2" target="_blank">Pesan Slot Sekarang via WhatsApp</a>`;
+            } else {
+              content = `<div class="alert alert-warning"><h4>${data.message}</h4></div><a href="https://wa.me/6283127541855?text=Halo%20Admin%20Titip.in,%20apakah%20ada%20opsi%20lain%20selain%20di%20daerah%20${daerah}?" class="btn btn-info mt-2" target="_blank">Tanya Admin untuk Opsi Lain</a>`;
+            }
+            hasilDiv.innerHTML = content;
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            hasilDiv.innerHTML = `<div class="alert alert-danger">Terjadi kesalahan saat menghubungi server. Pastikan file PHP ada di lokasi yang benar dan server berjalan.</div>`;
+          });
+      });
+    });
+  </script>
 
 </body>
 
